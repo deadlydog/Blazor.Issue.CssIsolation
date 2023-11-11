@@ -25,7 +25,7 @@ p {
 ```
 
 In the [wwwroot/css/site.css](/src/Blazor.Issue.CssIsolation/wwwroot/css/site.css) file I have the same CSS, but commented out.
-If I uncomment it, it applies the rules the Radzen DataList as expected:
+If I uncomment it, it applies the rules to the Radzen DataList as expected:
 
 ```css
 /* When these rules below are applied in this file, they work fine. They do not work when defined in an Isolated CSS file though. */
@@ -41,10 +41,10 @@ If I uncomment it, it applies the rules the Radzen DataList as expected:
 
 ## Results
 
-Here is what the page looks like when the CSS is applied from the Isolated CSS file (not working properly):
+Here is what the page looks like when the CSS is applied from the Isolated CSS `Index.razor.css` file (not working properly):
 
 ![CSS Isolation Not Working](/docs/Images/using-isolated-css-the-rules-are-not-applied.png)
 
-Here is what the page looks like when the CSS is applied from the wwwroot/css/site.css file (works as expected):
+Here is what the page looks like when the CSS is applied from the `wwwroot/css/site.css`` file (works as expected):
 
 ![Global CSS file works fine](/docs/Images/using-global-css-the-rules-are-applied.png)
