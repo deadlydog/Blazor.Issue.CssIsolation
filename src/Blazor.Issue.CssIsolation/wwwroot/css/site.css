@@ -66,3 +66,13 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+
+/* When these rules below are applied in this file, they work fine. They do not work when defined in an Isolated CSS file though. */
+.rz-datalist-data {
+	background-color: blue;
+}
+
+.rz-g > div, .rz-datalist-data > li {
+	padding: 0rem;
+}

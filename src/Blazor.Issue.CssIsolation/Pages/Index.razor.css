@@ -1,0 +1,14 @@
+/* This gets applied properly, so I know the Isolated CSS file itself is being applied. */
+p {
+	color: red;
+}
+
+/* For some reason these do not work from the Isolated CSS file, but do work from the wwwroot/css/site.css file */
+/* Even using "!important" seems to have no effect when in the Isolated CSS file. */
+.rz-datalist-data {
+	background-color: blue;
+}
+
+.rz-g > div, .rz-datalist-data > li {
+	padding: 0rem !important;
+}

@@ -1,9 +1,39 @@
-﻿@page "/"
+@page "/"
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<p>Some elements from the isolated css are applied (like the color of this text), but others are not.</p>
+<p>It seems I cannot override any of the Radzen component CSS properties (e.g. "rz" classes) from the Isolated CSS. If I do it from the global site wwwroot/css/site.css file though, then it works.</p>
 
-Welcome to your new app.
+<RadzenDataList Data="@listData" TItem="string" AllowPaging="false" AllowVirtualization="true" Style="padding:0;">
+	<Template Context="item">
+		<RadzenRow AlignItems="AlignItems.Center">
+			<RadzenColumn>
+				<RadzenRow>
+					<RadzenColumn>
+						<span>@(item)</span>
+					</RadzenColumn>
+					<RadzenColumn Size="1">
+						Test
+					</RadzenColumn>
+					<RadzenColumn>
+						@(item)
+					</RadzenColumn>
+				</RadzenRow>
+			</RadzenColumn>
+			<RadzenColumn Size="1">
+				<RadzenButton title="Remove from your list" Icon="remove" class="rz-ripple"
+							  Click="@(async () => await RemoveItem(item))" />
+			</RadzenColumn>
+		</RadzenRow>
+	</Template>
+</RadzenDataList>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+	List<string> listData = new() { "Item 1", "Item 2", "Item 3", "Item 4" };
+
+	private async Task RemoveItem(string item)
+	{
+		listData.Remove(item);
+	}
+}
