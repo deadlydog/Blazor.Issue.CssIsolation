@@ -60,7 +60,7 @@ I have reached out to the Radzen team for help [on their forums](https://forum.r
 The Radzen team was able to provide me with [a solution to this issue](https://forum.radzen.com/t/css-isolation-not-working-with-radzen-components/7147/10?u=deadlydog).
 The issue is not specific to Radzen controls, but rather a general issue with [Blazor CSS Isolation and child components](https://learn.microsoft.com/en-us/aspnet/core/blazor/components/css-isolation#child-component-support).
 
-The solution is to use the `::deep` css pseudo-element in the Isolated CSS file to target the child components.
+The solution is to add the `::deep` css pseudo-element in the Isolated CSS file to target the child components.
 So the CSS in the [Index.razor.css](/src/Blazor.Issue.CssIsolation/Pages/Index.razor.css) file should be changed to:
 
 ```css
@@ -75,7 +75,7 @@ So the CSS in the [Index.razor.css](/src/Blazor.Issue.CssIsolation/Pages/Index.r
 
 That alone is not enough to fix the issue though.
 We must also wrap the child control in an HTML element, such as a `<div>`, to get the generated CSS scope attribute.
-So we much change the HTML in the [Index.razor](/src/Blazor.Issue.CssIsolation/Pages/Index.razor) file to:
+So we must change the HTML in the [Index.razor](/src/Blazor.Issue.CssIsolation/Pages/Index.razor) file to:
 
 ```html
 <div>
